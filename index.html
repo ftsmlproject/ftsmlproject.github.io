@@ -199,26 +199,26 @@
 
   <!-- Brand -->
   <!--<a class="navbar-brand" href="#">LIMS</a>-->
-  <a class="navbar-brand" href="LIMS.html"><img src="logo.png" width="80"></a>
+  <a class="navbar-brand" href="LIMS.html"><img src="logo.png" width="80" id="logo" style="display:none;"></a>
   
   <!--<div class="collapse navbar-collapse" id="collapsibleNavbar">-->
   <div class="navbar-collapse collapse w-100 order-1 order-sm-0 dual-collapse2">
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
 
-      <li class="nav-item">
+      <li class="nav-item" id="menu01" style="display:none;">
         <a class="nav-link" href="#project" onclick="showDIV('divproject');">Project</a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" id="menu02" style="display:none;">
         <a class="nav-link" href="#quotation" onclick="showDIV('divquotation');">Quotation</a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" id="menu03" style="display:none;">
         <a class="nav-link" href="#jobform" onclick="showDIV('divjobform');">JobForm</a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" id="menu04" style="display:none;">
         <a class="nav-link" href="#invoice" onclick="showDIV('divinvoice');">Invoice</a>
       </li>
       <!--
@@ -228,7 +228,7 @@
       -->
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" id="menu05" style="display:none;">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Admin</a>
         <div class="dropdown-menu">
           <div style="background-color: silver;width:100%;height:1px;"></div>
@@ -245,7 +245,7 @@
       </li>
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" id="menu06" style="display:none;">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">PriceBook</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#testitem" onclick="showDIV('divtestitem');">Test Item</a>
@@ -255,7 +255,7 @@
       </li>
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" id="menu07" style="display:none;">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Portal</a>
         <div class="dropdown-menu">
           <!--<a class="dropdown-item" href="https://172.18.199.229:5005" target="_blank">CRM</a>-->
@@ -267,7 +267,7 @@
       </li>
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" id="menu08" style="display:none;">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Data</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#jrfdataupdate" onclick="showDIV('divjrfdataupdate');">JRF Data Update</a>
@@ -279,7 +279,7 @@
       </li>
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" id="menu09" style="display:none;">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Summary</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#intraco" onclick="showDIV('divintraco');">IntraCo (WIP/Invoice)</a>
@@ -326,7 +326,7 @@
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
     <ul class="navbar-nav ml-auto">
       <!-- Dropdown -->
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" id="menu10" style="display:none;">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
           <font color="lightgreen">Design/Spec</font>
         </a>
@@ -339,7 +339,7 @@
         </div>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" id="menu00">
         <a class="nav-link" href="#login" onclick="showDIV('divlogin');" style="color:#81D8D0;">Login</a>
       </li>
     
@@ -398,16 +398,16 @@
 <tr><td align="center" height="10"></td></tr>
 <tr><td align="center">
 &nbsp;&nbsp;<img src="username.png" width="15">&nbsp;&nbsp;
-<input type="text" name="username" placeholder="Username" style="color:white;background:transparent;outline:none;border:none;">
+<input type="text" id="loginusername" name="loginusername" placeholder="Username" style="color:white;background:transparent;outline:none;border:none;">
 </td></tr>
 <tr><td align="center" height="10"></td></tr>
 <tr><td align="center">
 &nbsp;&nbsp;<img src="password.png" width="15">&nbsp;&nbsp;
-<input type="text" name="password" placeholder="Password" style="color:white;background:transparent;outline:none;border:none;">
+<input type="Password" id="loginpassword" name="loginpassword" placeholder="Password" style="color:white;background:transparent;outline:none;border:none;">
 </td></tr>
 <tr><td align="center" height="10"></td></tr>
 <tr><td align="center">
-  <button class="button" style="vertical-align:middle" onclick="showDIV('divlogin');return false;"><span>Login </span></button>
+  <button class="button" style="vertical-align:middle" onclick="openMenu();showDIV('divlogin');return false;"><span>Login </span></button>
 </td></tr>
 <tr><td align="center" height="10"></td></tr>
 </table>
@@ -9872,6 +9872,37 @@
 </div>
 
 <script>
+  function openMenu(){
+    if (document.getElementById('loginpassword').value == 'FugroTesting'){
+      document.getElementById("logo").removeAttribute('style');
+      document.getElementById("menu01").removeAttribute('style');
+      document.getElementById("menu02").removeAttribute('style');
+      document.getElementById("menu03").removeAttribute('style');
+      document.getElementById("menu04").removeAttribute('style');
+      document.getElementById("menu05").removeAttribute('style');
+      document.getElementById("menu06").removeAttribute('style');
+      document.getElementById("menu07").removeAttribute('style');
+      document.getElementById("menu08").removeAttribute('style');
+      document.getElementById("menu09").removeAttribute('style');
+      document.getElementById("menu10").removeAttribute('style');
+      document.getElementById("foot").removeAttribute('style');
+      document.getElementById("foot").style.color='rgba(68, 68, 68, 0.6)';
+    }else{
+      document.getElementById("logo").style.display='none';
+      document.getElementById("menu01").style.display='none';
+      document.getElementById("menu02").style.display='none';
+      document.getElementById("menu03").style.display='none';
+      document.getElementById("menu04").style.display='none';
+      document.getElementById("menu05").style.display='none';
+      document.getElementById("menu06").style.display='none';
+      document.getElementById("menu07").style.display='none';
+      document.getElementById("menu08").style.display='none';
+      document.getElementById("menu09").style.display='none';
+      document.getElementById("menu10").style.display='none';
+      document.getElementById("foot").style.display='none';
+    }
+  }
+  
   function showDIV(myDIV) {
     /*
     var x = document.getElementById(myDIV);
@@ -10651,6 +10682,6 @@
 </script>
 
 
-<p align="center" style="color:rgba(68, 68, 68, 0.6);"><b>Powered by Fugro @ 2021</b></p>
+<p id="foot" align="center" style="color:rgba(68, 68, 68, 0.6);display:none;"><b>Powered by Fugro @ 2021</b></p>
 </body>
 </html>
